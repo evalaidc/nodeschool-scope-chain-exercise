@@ -1,32 +1,30 @@
-//  Scope Chains
+//  Global Scope & Shadowing
 
-// ## Scoped Variable Access
+// -- note taken from nodeschool.io - scope-chains-closures module
+// The javascript runtime follows these steps to assign a variable:
 //
-// All nested scopes follow the same rule: Each nested inner scope has access to
-// outer scope variables, but NOT vice-versa.
-//
-// For example:
-//
-//     function someFunc() {
-//       var outerVar = 1;
-//       function inner() {
-//         var innerVar = 2;
-//       }
-//     }
-//
-// inner has access to both innerVar & outerVar, but someFunc only has
-// access to outerVar
+//  1) Search within the current scope.
+//  2) If not found, search in the immediately outer scope.
+//  3) If found, go to 6.
+//  4) If not found, repeat 2. Until the Global Scope is reached.
+//  5) If not found in Global Scope, create it (on window / global objects).
+//  6) Assign the value.
 
-// ## Multiple Nested Scopes
-//
-// Nesting isn't limited to a single inner scope, there can be multiple nested
-// scopes, each of which adhere to the Scoped Variable Access rule above. With
-// one addition: sibling scopes are also restricted from accessing each other's
-// variables.
 
+
+// peace - example of a variable assume dto be in the outer scope.
+// window.peace / global.peace
+// thus allowing for the variable to altered - while the intention was to only allow change in the zip function.
 function foo() {
   var bar;
+  // global quux
+  quux = 9;
   function zip(){
-    var quux;
+    // shadow quux of the globally scoped one.
+    var quux = 7;
   };
 };
+
+
+// shadowing - can occur with nested function - variable in the inner function can be the same as outer function but have a different value.
+// the inner variable woudl be the shadow.
