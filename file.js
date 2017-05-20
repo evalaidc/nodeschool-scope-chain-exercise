@@ -1,26 +1,32 @@
-// intro to scope
-// ### Lexical Scope
-// var is used to denote a variable which is Lexically Scoped to the current
-// function:
+//  Scope Chains
+
+// ## Scoped Variable Access
+//
+// All nested scopes follow the same rule: Each nested inner scope has access to
+// outer scope variables, but NOT vice-versa.
+//
+// For example:
 //
 //     function someFunc() {
-//       var aVariable;
+//       var outerVar = 1;
+//       function inner() {
+//         var innerVar = 2;
+//       }
 //     }
 //
-// aVariable is lexically scoped within someFunc
+// inner has access to both innerVar & outerVar, but someFunc only has
+// access to outerVar
 
-// ### Block Scope
+// ## Multiple Nested Scopes
 //
-// let & const are used to denote variables which are Block Scoped to the
-// current curly braced block:
-//
-//     if (true) {
-//       let aVariable;
-//     }
-//
-// aVariable is block scoped within the if's curly braces
-//
+// Nesting isn't limited to a single inner scope, there can be multiple nested
+// scopes, each of which adhere to the Scoped Variable Access rule above. With
+// one addition: sibling scopes are also restricted from accessing each other's
+// variables.
 
 function foo() {
   var bar;
-}
+  function zip(){
+    var quux;
+  };
+};
