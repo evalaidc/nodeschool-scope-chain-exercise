@@ -12,9 +12,10 @@
 
 
 
-// peace - example of a variable assume dto be in the outer scope.
-// window.peace / global.peace
+// quux - example of a variable assumed to be in the outer scope.
+// window.quux / global.quux
 // thus allowing for the variable to altered - while the intention was to only allow change in the zip function.
+
 function foo() {
   var bar;
   // global quux
@@ -27,4 +28,4 @@ function foo() {
 
 
 // shadowing - can occur with nested function - variable in the inner function can be the same as outer function but have a different value.
-// the inner variable woudl be the shadow.
+// the inner variable would be the shadow.
