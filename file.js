@@ -1,22 +1,15 @@
-//  CLOSURES
+//  GARBAGE COLLECTION
 
-//  they are what enalbe callback-last programming - mechanism for handlingt eh asynchronous nature of most JS tasks.
+//garbage collection: decision process - determined by runtime when/if to release any allocated memroy
+// memory in JS is manauged automatically by runtime.
+// most JS use a variation of Mark & Sweep.
 
-// example from nodeschool.io
-// Given how nesting scope works, it's possible for an inner scope within
-// someFunc() to access bar. In this example, let's say inner() accesses
-// bar:
-//
-//     someFunc()
-//      var bar
-//         ↑
-//         |
-//      inner()
-//     alert(bar)
-//         ↑
-//         ⋮
-//
-// Then inner() is said to Close Over bar. Therefore inner() is a Closure.
+
+// note taken from nodeschool
+// While garbage collection occurs, it blocks the
+// main thread, which means other Javascript cannot be executed until the event
+// completes. Be conscious of how janky your application may become due to
+// extensive Garbage Collection events!
 
 function foo() {
   var bar;
